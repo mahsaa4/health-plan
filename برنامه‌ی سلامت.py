@@ -1,52 +1,53 @@
-class A:
-    def __init__(self, height, weight, age):
+class ClassRoom:
+    def __init__(self, height, weight, age, count):
         self.height = height
         self.weight = weight
         self.age = age
+        self.count = count
 
     def average_height(self):
-        total = sum(self.height)
-        averages = total / len(self.height)
-        print(float(averages))
+        return sum(self.height) / self.count
 
     def average_weight(self):
-        total = sum(self.weight)
-        averages = total / len(self.weight)
-        print(float(averages))
+        return sum(self.weight) / self.count
 
     def average_age(self):
-        total = sum(self.age)
-        averages = total / len(self.age)
-        print(float(averages))
+        return sum(self.age) / self.count
 
 
-class B(A):
-    def average_height(self):
-        total = sum(self.height)
-        averages = total / len(self.height)
-        print(float(averages))
+if __name__ == '__main__':
+    classrooms = []
+    for student in range(2):
+        x = int(input())
+        ages = list(map(int, input().split()))
+        height = list(map(int, input().split()))
+        weight = list(map(int, input().split()))
+        class_room = ClassRoom(age=ages, height=height, weight=weight, count=x)
+        classrooms.append(class_room)
 
-    def average_weight(self):
-        total = sum(self.weight)
-        averages = total / len(self.weight)
-        print(float(averages))
+    class_a = classrooms[0]
+    class_b = classrooms[1]
 
-    def average_age(self):
-        total = sum(self.age)
-        averages = total / len(self.age)
-        print(float(averages))
-if A.average_height > B.average_height:
-    print("A")
-if A.average_height < B.average_height:
-    print("B")
-if A.average_height == B.average_height:
-   if A.average_weight< B.average_weight:
-for x in range(2):
-    x = int(input())
-    for i in range(3):
-        my_input = [int(x) for x in input().split()]
-x1 = A(my_input)
-x1.average_height()
-x1.average_weight()
-x1.average_age()
-x2 = B(my_input)
+    print(class_a.average_age())
+    print(class_a.average_height())
+    print(class_a.average_weight())
+    print(class_b.average_age())
+    print(class_b.average_height())
+    print(class_b.average_weight())
+
+    a_average_heights = class_a.average_height()
+    b_average_heights = class_b.average_height()
+    a_average_weight = class_a.average_weight()
+    b_average_weight = class_b.average_weight()
+
+    if a_average_heights > b_average_heights:
+        print("A")
+    elif a_average_heights < b_average_heights:
+        print("B")
+    else:
+        if a_average_weight < b_average_weight:
+            print("A")
+        elif a_average_weight > b_average_weight:
+            print("B")
+        else:
+            print("Same")
